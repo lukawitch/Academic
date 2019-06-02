@@ -1,0 +1,218 @@
+<%@page import="com.project.ISAM.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<%@include file="./common.jsp"%>
+	  <script>
+	  function email_chk(){
+			var inputval = document.getElementById("email_click");
+			inputval.innerHTML = " <input type='email' class='form-control' id='email' placeholder='you@example.com' name='email' required >";
+		}
+			  function phone_chk(){
+			var inputval = document.getElementById("phone_click");
+			inputval.innerHTML = "<input type='text' class='form-control' id='phone' name='phone' placeholder='01098765432' onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' required>";
+		}
+
+	  </script>
+	  <script src="./resource/js/script.js"></script>
+ <%@include file="./common.jsp"%>
+  </head>
+
+  <body>
+   <%@include file="./header.jsp"%>
+<%
+String name;
+String phone;
+String mail;
+String major;
+String role;
+Member member =new Member();
+member=(Member)session.getAttribute("member");
+name=member.getName();
+phone=member.getTel();
+mail=member.getMail();
+major=member.getMajor();
+role=member.getRole();
+pageContext.setAttribute("major",major);
+pageContext.setAttribute("role", role);
+%>
+
+
+ <div class="row">
+        
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">기본정보</h4>
+          <form  method="post" class="needs-validation" action="personupdate" novalidate >
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="Name">이름</label>
+                <input type="text" class="form-control" id="name" placeholder="" name="name" value=<%=name %> readonly>
+                <div class="invalid-feedback">
+                  이름을 입력해주세요
+                </div>
+              </div>
+			      
+              <div class="col-md-6 mb-3">
+                <label for="number">학번/교번</label>
+                <input type="text" class="form-control" id="number" placeholder="" name="number" value=<%=session.getAttribute("id") %> readonly >
+                <div class="invalid-feedback">
+                  학번을 입력해주세요
+                </div>
+              </div>
+            </div>
+			<div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="username">비밀번호</label>
+
+
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  비밀번호를 입력해주세요
+                </div>
+            </div>
+             <div class="col-md-6 mb-3">
+              <label for="username_check">비밀번호확인</label>
+                <input type="password" class="form-control" id="password" name="password_check" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  비밀번호를 입력해주세요
+                </div>
+            </div>
+                      
+			</div>
+
+            <div class="row">
+             <div class="col-md-6 mb-3">
+              <label for="username">학과</label>
+             <select  class="custom-select d-block w-100" id="major" name="major"required >
+                  <option value="">Choose...</option>
+	
+                   <option value="computer" <c:if test="${pageScope.major eq 'computer'}">selected='selected'</c:if>>컴퓨터과학과</option>
+				  <option value="Biology" <c:if test="${pageScope.major eq 'Biology'}">selected='selected'</c:if>>생명과학과</option>
+				  <option value="Environment" <c:if test="${pageScope.major eq 'Environment'}">selected='selected'</c:if>>환경학과</option>
+				  <option value="Logistics" <c:if test="${pageScope.major eq 'Logistics'}">selected='selected'</c:if>>물류통계정보학과</option>
+				  <option value="Industrial" <c:if test="${pageScope.major eq 'Industrial'}">selected='selected'</c:if>>산업환경보건학과</option>
+				  <option value="media" <c:if test="${pageScope.major eq 'media'}">selected='selected'</c:if>>미디어디자인과</option>
+				  <option value="Culture_Contents" <c:if test="${pageScope.major eq 'Culture_Contents'}">selected='selected'</c:if>>문화콘텐츠학과</option>
+				<option value="dance" <c:if test="${pageScope.major eq 'dance'}">selected='selected'</c:if>>무용학과</option>
+				<option value="Cultural_Heritage" <c:if test="${pageScope.major eq 'Cultural_Heritage'}">selected='selected'</c:if>>문화재학과</option>
+				<option value="picture" <c:if test="${pageScope.major eq 'picture'}">selected='selected'</c:if>>회화학과</option>
+				<option value="Korean_music" <c:if test="${pageScope.major eq 'Korean_music'}">selected='selected'</c:if>>연극학과</option>
+				<option value="applied_music" <c:if test="${pageScope.major eq 'applied_music'}">selected='selected'</c:if>>실용음악과</option>
+				<option value="Movie" <c:if test="${pageScope.major eq 'Movie'}">selected='selected'</c:if>>영화영상학과</option>
+				<option value="Management" <c:if test="${pageScope.major eq 'Management'}">selected='selected'</c:if>>경영학과</option>
+				<option value="police" <c:if test="${pageScope.major eq 'police'}">selected='selected'</c:if>>경찰행정학과</option>
+				<option value="China" <c:if test="${pageScope.major eq 'China'}">selected='selected'</c:if>>중국학과</option>
+				<option value="Management_info" <c:if test="${pageScope.major eq 'Management_info'}">selected='selected'</c:if>>경영정보학과</option>
+				<option value="English" <c:if test="${pageScope.major eq 'English'}">selected='selected'</c:if>>영어과</option>		
+				  <option value="Culture_tour" <c:if test="${pageScope.major eq 'Culture_tour'}">selected='selected'</c:if>>문화관광학과</option>
+				  <option value="Food_nutrition" <c:if test="${pageScope.major eq 'Food_nutrition'}">selected='selected'</c:if>>식품영양학과</option>
+				  <option value="Physical_therapy" <c:if test="${pageScope.major eq 'Physical_therapys'}">selected='selected'</c:if>>물리치료학과</option>
+				  <option value="Social_welfare" <c:if test="${pageScope.major eq 'Social_welfare'}">selected='selected'</c:if>>사회복지학과</option>
+				  <option value="Sports_leisure" <c:if test="${pageScope.major eq 'Sports_leisure'}">selected='selected'</c:if>>스포츠레저학과</option>
+				  <option value="Golf" <c:if test="${pageScope.major eq 'Golf'}">selected='selected'</c:if>>골프학과</option>
+				  <option value="Physical" <c:if test="${pageScope.major eq 'Physical'}">selected='selected'</c:if>>체육학과</option>
+				  <option value="Special_sports" <c:if test="${pageScope.major eq 'Special_sports'}">selected='selected'</c:if>>특수체육교육학과</option>
+				  <option value="judo" <c:if test="${pageScope.major eq 'judo'}">selected='selected'</c:if>>유도학과</option>
+				   <option value="judo_game" <c:if test="${pageScope.major eq 'judo_game'}">selected='selected'</c:if>>유도경기지도학과</option>
+				  <option value="Taekwondo" <c:if test="${pageScope.major eq 'Taekwondo'}">selected='selected'</c:if>>태권도학과</option>
+				  <option value="Taekwondo_game" <c:if test="${pageScope.major eq 'Taekwondo_game'}">selected='selected'</c:if>>태권도경기지도학과</option>
+				  <option value="combative" <c:if test="${pageScope.major eq 'combative'}">selected='selected'</c:if>>격기지도학과</option>
+				  <option value="Guard" <c:if test="${pageScope.major eq 'Guard'}">selected='selected'</c:if>>경호학과</option>
+				  <option value="Oriental" <c:if test="${pageScope.major eq 'Oriental'}">selected='selected'</c:if>>동양무예학과</option>
+				  <option value="military_affairs" <c:if test="${pageScope.major eq 'military_affairs'}">selected='selected'</c:if>>군사학과</option>
+			
+                </select>
+                <div class="invalid-feedback" style="width: 100%;">
+                  학과선택해주세요
+                </div>
+            </div>
+              <div class="col-md-6 mb-3">
+                <label for="country">직위</label>
+                <select class="custom-select d-block w-100" id="role" name="role" >
+                  <option value="">Choose...</option>
+                  <option value="boss" <c:if test="${pageScope.role eq 'boss'}">selected='selected'</c:if>>팀장</option>
+				  <option value="member" <c:if test="${pageScope.role eq 'member'}">selected='selected'</c:if>>팀원</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+             
+              </div>
+                <div class="row">
+					<div class="col-md-4 mb-3">
+	
+			
+              <label for="Phone">전화번호</label>
+			  <div id="phone_click">
+              <input type="text" class="form-control" id="phone" name="phone" value=<%=phone %> readonly>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+				</div>
+              </div>
+
+			
+			</div>
+			<div class="col-md-2 mb-3" style="display: inline-block; margin-top:33px;">
+			<button type="button" class="btn btn-outline-info btn-md btn-block" onclick="phone_chk()">정보수정</button></div>
+			
+			
+			
+			          <div class="col-md-4 mb-3">
+                 <label for="email">Email</label>
+			  <div id="email_click">
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email" value=<%=mail %> readonly></div>
+                   <div class="invalid-feedback" style="width: 100%;">
+                  이메일을 입력해주세요
+                </div>
+            </div>
+			<div class="col-md-2 mb-3" style="display: inline-block; margin-top:33px;">
+			<button type="button" class="btn btn-outline-info btn-md btn-block"  onclick="email_chk()">정보수정</button></div>
+              </div>
+          
+            <hr class="mb-4">
+            <button class="btn btn-outline-info btn-lg btn-block" type="submit">정보저장</button>
+			<br>
+			<br>
+			<br>
+         </form>
+        </div>
+        
+      </div>
+	  
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="./resource/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="./resource/js/vendor/popper.min.js"></script>
+    <script src="./resource/js/bootstrap.min.js"></script>
+    <script src="./resource/js/vendor/holder.min.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
+</html>

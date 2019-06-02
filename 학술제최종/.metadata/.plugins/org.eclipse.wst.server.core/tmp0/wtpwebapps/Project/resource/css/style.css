@@ -1,0 +1,171 @@
+*{
+	margin:0 auto;
+	padding:0px;
+	list-style:none;
+}
+html,body{
+}
+header,footer,#slide,#contents{
+	width:100%;
+}
+header{
+	height:150px;
+	overflow:hidden;
+}
+footer{
+	height:100px;
+	background-color:#6699ff;
+}
+#slide{
+	height:350px;
+	position:relative;
+}
+#contents{
+	height:500px;
+}
+.nav1{
+	text-align:center;
+	
+}
+.nav1>li{
+	display:inline-block;
+	margin-top:50px;
+	width:150px;
+	height:30px;
+	line-height:30px;
+}
+.nav1>li:hover{
+	background-color:#6699ff;
+}
+.logo{
+	margin-top:30px;
+	float:left;
+	width:40%;
+	
+}
+.logo>img{
+	height:150px;
+}
+.submenu{
+	position:absolute;
+	display:none;
+	z-index:1;
+}
+.submenu>li{
+	width:150px;
+	height:30px;
+	line-height:30px;
+}
+.submenu>li:hover{
+	background-color:#0066cc;
+}
+.imgs{
+	
+	position:relative;
+	overflow:hidden;
+	width:1000px;
+	height:100%;
+}
+
+.imgs>img{
+
+	position:absolute;
+	width:1000px;
+	transition:all 0.8s;
+}
+
+.notice{
+	float:left;
+	width:48%;
+	margin-top:20px;
+}
+
+.notice>h2{
+	text-align:center;
+	color:#303030;
+}
+.notice table{
+	border-collapse:collapse;
+}
+.notice tr>td{
+	padding:2px;
+}
+.notice tr:nth-child(2n+1){
+	background-color:#303030;
+}
+.site>h2{
+	text-align:center;
+}
+.site{
+		float:right;
+	width:48%;
+	margin-top:20px;
+	margin-left:30px;
+}
+
+.banner.active{
+	width:100%;
+	height:100%;
+	position:fixed;
+	margin-top:-500px;
+	background-color:rgba(0,0,0,0.5);
+	text-align:center;
+	margin-left:-150px;
+	display:block;
+}
+.banner{
+	display:none;
+	z-index:1;
+}
+.three{
+	width:1000px;
+	height:200px;
+	text-align:center;
+	margin:25px 0;
+}
+.three>div{
+	display:inline-block;
+	text-align:center;
+	margin:0 40px;
+}
+
+.up{
+	height:250px;
+}
+.three>div>h3:hover{
+	color:#6699ff;
+}
+
+.left{
+	width:40%;
+	padding-top:15px;
+	padding-left:30px;
+	float:left;
+}
+.left>ul>li{
+	display:inline-block;
+	padding-right:10px;
+}
+.right{
+	width:55%;
+	padding-top:15px;
+	float:right;
+	font-size:13px;
+}
+
+.info{
+	position:relative;
+	margin-top:-230px;
+	text-align:center;
+	width:300px;
+	height:100px;
+	background-color:rgba(255,255,255,0.5);
+	padding-top:20px;
+	border-radius:20px;
+}
+button{
+	background-color:#0066cc;
+	padding:10px;
+	color:white;
+	border-radius:10px;
+}

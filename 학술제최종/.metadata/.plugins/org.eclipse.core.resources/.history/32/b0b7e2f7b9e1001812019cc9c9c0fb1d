@@ -1,0 +1,201 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<%@include file="./common.jsp"%>
+	  <script>
+	  function email_chk(){
+			var inputval = document.getElementById("email_click");
+			inputval.innerHTML = " <input type='email' class='form-control' id='email' placeholder='you@example.com' name='email' required >";
+		}
+			  function phone_chk(){
+			var inputval = document.getElementById("phone_click");
+			inputval.innerHTML = "<input type='text' class='form-control' id='phone' name='phone' placeholder='01098765432' onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' required>";
+		}
+
+	  </script>
+	  <script src="./resource/js/script.js"></script>
+  </head>
+
+  <body>
+   
+
+    <div class="container">
+
+	  	  <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-1 col-md-4 pt-1">
+            <a class="text-muted" href="#"></a>
+          </div>
+		  	  <div class="col-10 col-md-4 text-center" style="text-align:center;">
+			  
+      <form class="form-inline" >    
+
+            <input class="form-control col-8" type="search" placeholder="Search" aria-label="Search">
+<button class="btn btn-outline-info my-2 my-col-4 col-4" type="submit">Search</button>
+      
+</form>
+   </div> 
+
+            <div class="col-1 col-md-4 d-flex justify-content-end align-items-center">          
+          </div>
+        </div>
+
+  
+
+ <header class="blog-header py-3">
+           <div class="p-3 p-md-5 ">
+        <div class="col-12 px-0">
+          <img src="./resource/img/Big_Logo.png" class="rounded mx-auto d-block" style="width:50%;height:auto;">
+        </div>
+      </div>
+      </header>
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 text-muted" href="#">졸업작품</a>
+          <a class="p-2 text-muted" href="#">학술제</a>
+          <a class="p-2 text-muted" href="#">프로젝트</a>
+          <a class="p-2 text-muted" href="./resource/editpersonal.jsp">개인정보수정</a>
+          <a class="p-2 text-muted" href="./resource/login.jsp">login</a>
+        </nav>
+		
+      </div>
+<hr>
+<div class="row">
+        
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">기본정보</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="Name">이름</label>
+                <input type="text" class="form-control" id="name" placeholder="" name="name" value="홍길동" readonly>
+                <div class="invalid-feedback">
+                  이름을 입력해주세요
+                </div>
+              </div>
+			      
+              <div class="col-md-6 mb-3">
+                <label for="number">학번/교번</label>
+                <input type="text" class="form-control" id="number" placeholder="" name="number" value="209933099" readonly >
+                <div class="invalid-feedback">
+                  학번을 입력해주세요
+                </div>
+              </div>
+            </div>
+			<div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="username">비밀번호</label>
+
+
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  비밀번호를 입력해주세요
+                </div>
+            </div>
+           <div class="col-md-6 mb-3">
+              <label for="username">학과</label>
+
+
+                 <select class="custom-select d-block w-100" id="major" name="major" required>
+                  <option value="">Choose...</option>
+				  <optgroup label="환경과학대학">
+                  <option value="computer" selected="selected">컴퓨터과학과</option>
+				  <option value="Biology">생명과학과</option>
+				  </optgroup>
+				  <optgroup label="문화예술대학">
+				  <option value="media">미디어디자인과</option>
+				  <option value="Culture_Contents">문화콘텐츠학과</option>
+				  </optgroup>
+                </select>
+                <div class="invalid-feedback" style="width: 100%;">
+                  학과선택해주세요
+                </div>
+            </div>
+			</div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="country">직위</label>
+                <select class="custom-select d-block w-100" id="role" name="role">
+                  <option value="">Choose...</option>
+                  <option value="boss">팀장</option>
+				  <option value="member">팀원</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+			<div class="col-md-4 mb-3">
+	
+			
+              <label for="Phone">전화번호</label>
+			  <div id="phone_click">
+              <input type="text" class="form-control" id="phone" name="phone" value="01099999999" readonly>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+				</div>
+              </div>
+
+			
+			</div>
+			<div class="col-md-2 mb-3" style="display: inline-block; margin-top:33px;">
+			<button type="button" class="btn btn-outline-info btn-md btn-block" onclick="phone_chk()">정보수정</button></div>
+			
+			</div>
+			 <div class="row">
+			          <div class="col-md-8 mb-3">
+              <label for="email">Email</label>
+			  <div id="email_click">
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email" value="asdf@naver.com" readonly></div>
+                   <div class="invalid-feedback" style="width: 100%;">
+                  이메일을 입력해주세요
+                </div>
+            </div>
+			<div class="col-md-4 mb-3" style="display: inline-block; margin-top:33px;">
+			<button type="button" class="btn btn-outline-info btn-md btn-block"  onclick="email_chk()">정보수정</button></div>
+              </div>
+          
+            <hr class="mb-4">
+            <button class="btn btn-outline-info btn-lg btn-block" type="submit">정보저장</button>
+			<br>
+			<br>
+			<br>
+          </form>
+        </div>
+      </div>
+	  
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="./resource/js/jquery-slim.min.js"><\/script>')</script>
+    <script src="./resource/js/vendor/popper.min.js"></script>
+    <script src="./resource/js/bootstrap.min.js"></script>
+    <script src="./resource/js/vendor/holder.min.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
+</html>

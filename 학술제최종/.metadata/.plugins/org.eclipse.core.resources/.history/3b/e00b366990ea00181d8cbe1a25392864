@@ -1,0 +1,8 @@
+package com.project.ISAM;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+@WebServlet("/mid")
+public class Modified_Mid extends HttpServlet {
+
+}
